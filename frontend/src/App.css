@@ -1,0 +1,1020 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Home hero fade-up animations ===== */
+@keyframes heroUp {
+  0% { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-hero-up { animation: heroUp 0.6s ease-out both; }
+.animate-hero-up2 { animation: heroUp 0.6s ease-out 0.12s both; }
+.animate-hero-up3 { animation: heroUp 0.6s ease-out 0.24s both; }
+
+
+/* Hide scrollbar utility */
+.scrollbar-hidden {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari, Opera */
+}
+
+/* Mobile hover prevention - only apply hover effects on devices with hover capability */
+@media (hover: hover) and (pointer: fine) {
+  .hover-device\:-translate-y-0\.5:hover {
+    --tw-translate-y: -0.125rem;
+    transform: translate(var(--tw-translate-x, 0), var(--tw-translate-y)) rotate(var(--tw-rotate, 0)) skewX(var(--tw-skew-x, 0)) skewY(var(--tw-skew-y, 0)) scaleX(var(--tw-scale-x, 1)) scaleY(var(--tw-scale-y, 1));
+  }
+  .hover-device\:shadow-\[0_6px_24px_-8px_rgba\(0\,0\,0\,0\.1\)\]:hover {
+    box-shadow: 0 6px 24px -8px rgba(0,0,0,0.1);
+  }
+  .hover-device\:border-slate-200:hover {
+    border-color: rgb(226, 232, 240);
+  }
+  .hover-device-group:hover .hover-device-group\:scale-105,
+  .group:hover .hover-device-group\:scale-105 {
+    transform: scale(1.05);
+  }
+}
+
+/* On touch devices, always show navigation controls */
+@media (hover: none) {
+  .touch-device-show {
+    opacity: 1 !important;
+  }
+  .group:hover .group-hover\:opacity-100.touch-device-show {
+    opacity: 1 !important;
+  }
+}
+
+/* Choose Your Style cards - hover effects only on devices that truly support hover */
+.style-card {
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease;
+  will-change: transform;
+}
+.style-card-img { transition: transform 0.7s ease-out; }
+.style-card-overlay { transition: opacity 0.3s ease; }
+.style-card-cta { transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease; }
+.style-card-icon { transition: transform 0.5s ease; }
+.style-card-shine { transition: left 1s ease-out; left: -100%; }
+
+@media (hover: hover) and (pointer: fine) {
+  .style-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 24px 50px -18px rgba(15, 23, 42, 0.35);
+  }
+  .style-card:hover .style-card-img { transform: scale(1.1); }
+  .style-card:hover .style-card-overlay { opacity: 1; }
+  .style-card:hover .style-card-cta {
+    background-color: rgba(255, 255, 255, 0.28);
+    border-color: rgba(255, 255, 255, 0.45);
+  }
+  .style-card:hover .style-card-cta-arrow { transform: translateX(4px); }
+  .style-card:hover .style-card-icon { transform: scale(1.12); }
+  .style-card:hover .style-card-shine { left: 140%; }
+}
+
+.App {
+  min-height: 100vh;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+.App-link {
+  color: #3bf4fb;
+}
+
+.product-image-hover {
+  transition: transform 0.3s ease-out;
+}
+
+.product-image-hover:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive font sizes */
+html {
+  font-size: 15px;
+}
+
+@media (min-width: 640px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1024px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+/* Compact spacing */
+.shadow-card {
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+
+.shadow-hover {
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Line clamp utilities */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Hide scrollbar for thumbnail strip */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* ===============================================
+   Mega Menu - Creative Hover Dropdowns
+   =============================================== */
+
+/* Main dropdown container */
+.cat-dropdown-wrapper {
+  position: relative;
+}
+
+.cat-dropdown-wrapper .cat-dropdown {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-8px) scale(0.98);
+  transform-origin: top center;
+  transition: 
+    opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cat-dropdown-wrapper:hover > .cat-dropdown,
+.cat-dropdown-wrapper:focus-within > .cat-dropdown {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateY(0) scale(1) !important;
+}
+
+/* Dropdown inner container with glow effect */
+.cat-dropdown > div {
+  animation: dropdownGlow 0.4s ease-out forwards;
+  box-shadow: 
+    0 10px 40px -5px rgba(124, 58, 237, 0.15),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(124, 58, 237, 0.1);
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.98);
+}
+
+@keyframes dropdownGlow {
+  0% {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  100% {
+    box-shadow: 
+      0 10px 40px -5px rgba(124, 58, 237, 0.15),
+      0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+}
+
+/* Staggered animation for dropdown items */
+.cat-dropdown a,
+.cat-dropdown .sub-dropdown-wrapper > a {
+  opacity: 0;
+  transform: translateX(-8px);
+  animation: slideInItem 0.3s ease-out forwards;
+}
+
+.cat-dropdown-wrapper:hover .cat-dropdown a:nth-child(1),
+.cat-dropdown-wrapper:hover .cat-dropdown .sub-dropdown-wrapper:nth-child(1) > a { animation-delay: 0.05s; }
+.cat-dropdown-wrapper:hover .cat-dropdown a:nth-child(2),
+.cat-dropdown-wrapper:hover .cat-dropdown .sub-dropdown-wrapper:nth-child(2) > a { animation-delay: 0.1s; }
+.cat-dropdown-wrapper:hover .cat-dropdown a:nth-child(3),
+.cat-dropdown-wrapper:hover .cat-dropdown .sub-dropdown-wrapper:nth-child(3) > a { animation-delay: 0.15s; }
+.cat-dropdown-wrapper:hover .cat-dropdown a:nth-child(4),
+.cat-dropdown-wrapper:hover .cat-dropdown .sub-dropdown-wrapper:nth-child(4) > a { animation-delay: 0.2s; }
+.cat-dropdown-wrapper:hover .cat-dropdown a:nth-child(5),
+.cat-dropdown-wrapper:hover .cat-dropdown .sub-dropdown-wrapper:nth-child(5) > a { animation-delay: 0.25s; }
+
+@keyframes slideInItem {
+  0% {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Hover effect on dropdown items */
+.cat-dropdown a:hover,
+.sub-dropdown-wrapper > a:hover {
+  background: linear-gradient(90deg, rgba(124, 58, 237, 0.08) 0%, rgba(59, 130, 246, 0.04) 100%) !important;
+  padding-left: 20px !important;
+  transition: all 0.2s ease-out;
+}
+
+/* Sub-dropdown (nested) */
+.sub-dropdown-wrapper {
+  position: relative;
+}
+
+.sub-dropdown-wrapper .sub-dropdown {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateX(-8px) scale(0.98);
+  transform-origin: left center;
+  transition: 
+    opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sub-dropdown-wrapper:hover > .sub-dropdown {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transform: translateX(0) scale(1) !important;
+}
+
+/* Sub-dropdown styling */
+.sub-dropdown > div {
+  box-shadow: 
+    0 10px 40px -5px rgba(124, 58, 237, 0.12),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(124, 58, 237, 0.08);
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.98);
+}
+
+/* Active indicator line animation */
+.cat-trigger {
+  position: relative;
+  overflow: hidden;
+}
+
+.cat-trigger::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3bf4fb, #3b82f6);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cat-dropdown-wrapper:hover .cat-trigger::after {
+  width: 80%;
+}
+
+/* Chevron rotation animation */
+.cat-trigger svg {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cat-dropdown-wrapper:hover .cat-trigger svg {
+  transform: rotate(180deg);
+}
+
+/* Mobile Mega Menu Animations */
+.mobile-dropdown-animate {
+  animation: mobileDropdownSlide 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  transform-origin: top center;
+}
+
+@keyframes mobileDropdownSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.mobile-dropdown-item {
+  opacity: 0;
+  transform: translateX(-8px);
+  animation: slideInItem 0.3s ease-out forwards;
+}
+
+@media (max-width: 768px) {
+  .mobile-dropdown-item:nth-child(1) { animation-delay: 0.05s; }
+  .mobile-dropdown-item:nth-child(2) { animation-delay: 0.1s; }
+  .mobile-dropdown-item:nth-child(3) { animation-delay: 0.15s; }
+  .mobile-dropdown-item:nth-child(4) { animation-delay: 0.2s; }
+  .mobile-dropdown-item:nth-child(5) { animation-delay: 0.25s; }
+}
+
+
+/* ===== Full-width table pages (Admin & Shop) ===== */
+.admin-table-page,
+.shop-table-page {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  max-width: 100% !important;
+}
+
+.admin-table-page > .max-w-7xl,
+.admin-table-page > .max-w-6xl,
+.admin-table-page > .max-w-5xl,
+.shop-table-page > .max-w-7xl,
+.shop-table-page > .max-w-6xl,
+.shop-table-page > .max-w-5xl {
+  max-width: 100% !important;
+  padding-left: 0.5rem !important;
+  padding-right: 0.5rem !important;
+}
+
+/* Compact table styles */
+.compact-table table {
+  font-size: 0.8rem;
+}
+
+.compact-table th {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 0.75rem;
+  font-weight: 600;
+}
+
+.compact-table td {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+}
+
+.compact-table tr {
+  border-bottom: 1px solid #f1f5f9;
+}
+
+@media (max-width: 1024px) {
+  .compact-table table {
+    font-size: 0.75rem;
+  }
+  .compact-table th,
+  .compact-table td {
+    padding: 0.4rem 0.5rem;
+    font-size: 0.72rem;
+  }
+}
+
+
+/* Mobile edge-to-edge product cards */
+@media (max-width: 639px) {
+  .mobile-products-grid {
+    gap: 2px !important;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 2px;
+    padding-right: 2px;
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+  .mobile-products-grid > * {
+    border-radius: 0.5rem !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+  .mobile-products-grid > div > a > div,
+  .mobile-products-grid > a > div {
+    border-radius: 0.5rem !important;
+  }
+
+  /* Product detail wide sections - full width on phone */
+  .detail-wide-section {
+    margin-left: -0.75rem !important;
+    margin-right: -0.75rem !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .detail-wide-section > div {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  
+  /* Sponsored section no gap on mobile */
+  [data-testid="sponsored-products-section"] .grid {
+    gap: 0 !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+  [data-testid="sponsored-products-section"] {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
+  [data-testid="sponsored-products-section"] .max-w-\[1600px\] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Fix all grid overflow on phone */
+  [data-testid="sponsored-products-grid"] .grid,
+  [data-testid="gift-products-section"] .grid,
+  [data-testid="infinite-products-section"] .grid {
+    gap: 0 !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+}
+
+/* Dark mode overrides for common elements */
+.dark .bg-white {
+  background-color: hsl(220, 20%, 10%) !important;
+}
+.dark .bg-slate-50,
+.dark .bg-slate-100 {
+  background-color: hsl(220, 20%, 13%) !important;
+}
+.dark .bg-slate-200 {
+  background-color: hsl(220, 20%, 16%) !important;
+}
+.dark .text-slate-900,
+.dark .text-slate-800,
+.dark .text-slate-700 {
+  color: hsl(210, 40%, 92%) !important;
+}
+.dark .text-slate-600,
+.dark .text-slate-500 {
+  color: hsl(215, 20%, 65%) !important;
+}
+.dark .text-slate-400 {
+  color: hsl(215, 15%, 55%) !important;
+}
+.dark .border-slate-100,
+.dark .border-slate-200,
+.dark .border-slate-300 {
+  border-color: hsl(220, 20%, 18%) !important;
+}
+.dark .bg-gradient-to-br.from-violet-50 {
+  background: hsl(220, 20%, 8%) !important;
+}
+.dark footer {
+  background-color: hsl(222, 84%, 3%) !important;
+}
+.dark .shadow-card,
+.dark .shadow-sm {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.4) !important;
+}
+
+/* Dark mode navbar */
+.dark nav,
+.dark header {
+  background-color: hsl(220, 25%, 8%) !important;
+  border-color: hsl(220, 20%, 15%) !important;
+}
+
+/* Dark mode inputs */
+.dark input,
+.dark textarea,
+.dark select {
+  background-color: hsl(220, 20%, 13%) !important;
+  border-color: hsl(220, 20%, 20%) !important;
+  color: hsl(210, 40%, 90%) !important;
+}
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: hsl(215, 15%, 45%) !important;
+}
+
+/* Dark mode cards and popups */
+.dark [role="dialog"],
+.dark [data-radix-popper-content-wrapper] > div {
+  background-color: hsl(220, 20%, 12%) !important;
+  border-color: hsl(220, 20%, 18%) !important;
+}
+
+/* Dark mode category bar */
+.dark .bg-white\/80 {
+  background-color: hsla(220, 20%, 10%, 0.9) !important;
+}
+
+/* Dark mode hover states */
+.dark .hover\:bg-slate-50:hover {
+  background-color: hsl(220, 20%, 15%) !important;
+}
+
+/* Dark mode product card fix */
+.dark .group.bg-white {
+  background-color: hsl(220, 20%, 10%) !important;
+}
+
+/* Dark mode min-h-screen background */
+.dark .min-h-screen {
+  background-color: hsl(220, 25%, 6%) !important;
+}
+
+/* Dark mode scroll ticker */
+.dark .bg-emerald-600,
+.dark .bg-rose-600 {
+  opacity: 0.9;
+}
+
+/* ===== DARK MODE: Category Bar below navbar ===== */
+.dark .bg-white\/80,
+.dark .backdrop-blur-xl {
+  background-color: hsla(220, 25%, 8%, 0.95) !important;
+}
+.dark .bg-white\/95 {
+  background-color: hsla(220, 25%, 10%, 0.97) !important;
+}
+
+/* Category bar links and text */
+.dark [class*="category-bar"] a,
+.dark [class*="category-bar"] button,
+.dark [class*="category-bar"] span {
+  color: hsl(215, 20%, 70%) !important;
+}
+
+/* ===== DARK MODE: Round buttons on cards (cart, wishlist, share) ===== */
+.dark .bg-white\/90,
+.dark .bg-white\/80 {
+  background-color: hsla(220, 25%, 15%, 0.9) !important;
+}
+.dark button.bg-white\/90,
+.dark button[class*="bg-white/90"] {
+  background-color: hsla(220, 25%, 18%, 0.95) !important;
+  color: hsl(215, 20%, 70%) !important;
+}
+
+/* ===== DARK MODE: Filter range backgrounds ===== */
+.dark .from-violet-50,
+.dark .bg-gradient-to-r.from-violet-50,
+.dark [class*="from-violet-50"] {
+  background: hsl(220, 25%, 14%) !important;
+}
+.dark .from-orange-50,
+.dark .bg-gradient-to-r.from-orange-50,
+.dark [class*="from-orange-50"] {
+  background: hsl(220, 25%, 14%) !important;
+}
+.dark .border-violet-100 {
+  border-color: hsl(260, 30%, 25%) !important;
+}
+.dark .border-orange-100 {
+  border-color: hsl(30, 30%, 25%) !important;
+}
+
+/* Filter category text color fix - remove blue tint */
+.dark .text-violet-600,
+.dark .text-violet-500 {
+  color: hsl(263, 70%, 65%) !important;
+}
+.dark .text-orange-600 {
+  color: hsl(25, 80%, 60%) !important;
+}
+
+/* ===== DARK MODE: Auth page (Login, Sign Up, Sell tabs) ===== */
+.dark .bg-gradient-to-br.from-violet-600,
+.dark [class*="from-violet-600"][class*="to-indigo-900"] {
+  /* Keep auth gradient background as-is, it's already dark */
+}
+.dark .bg-white.rounded-3xl,
+.dark .bg-white.rounded-2xl {
+  background-color: hsl(220, 20%, 10%) !important;
+}
+.dark .bg-slate-50.rounded-xl,
+.dark .bg-slate-50.rounded-2xl {
+  background-color: hsl(220, 20%, 13%) !important;
+}
+
+/* Auth page tabs */
+.dark [role="tablist"],
+.dark [data-state="active"][role="tab"] {
+  background-color: hsl(220, 20%, 12%) !important;
+}
+
+/* ===== DARK MODE: Contact page header ===== */
+.dark .bg-gradient-to-br.from-violet-50.via-white.to-teal-50,
+.dark .bg-gradient-to-br.from-violet-50 {
+  background: hsl(220, 25%, 6%) !important;
+}
+
+/* Contact/About hero sections */
+.dark .bg-gradient-to-r.from-violet-600.to-indigo-600 {
+  /* Keep gradient headers as-is - already have good contrast */
+}
+
+/* ===== DARK MODE: About page ===== */
+.dark .bg-gradient-to-b.from-slate-50.to-white,
+.dark .bg-gradient-to-b.from-white.to-slate-50 {
+  background: hsl(220, 25%, 6%) !important;
+}
+
+/* ===== DARK MODE: Become a Seller page ===== */
+.dark .bg-gradient-to-br.from-slate-50 {
+  background: hsl(220, 25%, 6%) !important;
+}
+
+/* Become seller cards */
+.dark .bg-white.shadow-xl,
+.dark .bg-white.shadow-lg,
+.dark .bg-white.shadow-2xl {
+  background-color: hsl(220, 20%, 10%) !important;
+}
+
+/* ===== DARK MODE: Admin & Shop sidebar backgrounds ===== */
+.dark .bg-white.border-r {
+  background-color: hsl(220, 25%, 8%) !important;
+  border-color: hsl(220, 20%, 15%) !important;
+}
+.dark .bg-slate-50\/50 {
+  background-color: hsl(220, 25%, 6%) !important;
+}
+
+/* Admin/Shop sidebar nav items */
+.dark .text-slate-600.hover\:bg-slate-100:hover {
+  background-color: hsl(220, 20%, 14%) !important;
+}
+
+/* ===== DARK MODE: Various gradient backgrounds ===== */
+.dark .from-violet-50.via-white.to-teal-50 {
+  background: hsl(220, 25%, 6%) !important;
+}
+
+/* Select dropdowns */
+.dark [data-radix-select-viewport],
+.dark [role="listbox"] {
+  background-color: hsl(220, 20%, 12%) !important;
+}
+.dark [data-radix-select-item]:hover,
+.dark [role="option"]:hover {
+  background-color: hsl(220, 20%, 18%) !important;
+}
+
+/* Checkbox/Switch backgrounds */
+.dark .bg-violet-50,
+.dark .bg-blue-50,
+.dark .bg-pink-50,
+.dark .bg-amber-50,
+.dark .bg-emerald-50,
+.dark .bg-green-50,
+.dark .bg-red-50 {
+  background-color: hsla(220, 20%, 15%, 0.8) !important;
+}
+
+/* Badge colors in dark mode */
+.dark .bg-green-100 {
+  background-color: hsla(142, 40%, 15%, 0.8) !important;
+}
+.dark .bg-red-100 {
+  background-color: hsla(0, 40%, 15%, 0.8) !important;
+}
+.dark .bg-violet-100 {
+  background-color: hsla(263, 40%, 15%, 0.8) !important;
+}
+
+/* Table header in dark */
+.dark thead.bg-slate-50,
+.dark .bg-slate-50.border-b {
+  background-color: hsl(220, 20%, 12%) !important;
+}
+
+/* Prose/TOS dark mode */
+.dark .prose p,
+.dark .prose li {
+  color: hsl(215, 20%, 70%) !important;
+}
+.dark .prose h2,
+.dark .prose h3 {
+  color: hsl(210, 40%, 90%) !important;
+}
+
+
+/* ===== DARK MODE: Home Hero Section ===== */
+/* Keep the dark purple/slate bg, fix the sections below it */
+.dark .bg-slate-50 {
+  background-color: hsl(220, 25%, 6%) !important;
+}
+.dark .bg-gradient-to-r.from-amber-50\/50 {
+  background: hsl(220, 25%, 8%) !important;
+}
+
+/* ===== DARK MODE: Shop Public Page Header ===== */
+/* Keep the dark gradient, remove bottom border, fix content area below */
+.dark [data-testid="shop-hero"] {
+  border-bottom: none !important;
+}
+.dark [data-testid="shop-hero"] + div {
+  border-top: none !important;
+}
+
+/* Fix SVG wave fills for dark mode - Tailwind dark: prefix on fill */
+.dark .fill-slate-50 {
+  fill: hsl(220, 25%, 6%) !important;
+}
+
+/* ===== DARK MODE: Shops section cards (white bg cards) ===== */
+.dark .bg-white.border.border-slate-200.rounded-2xl {
+  background-color: hsl(220, 20%, 10%) !important;
+  border-color: hsl(220, 20%, 18%) !important;
+}
+
+/* Sponsored section bg in dark mode */
+.dark .from-amber-50\/50 {
+  background: hsl(220, 25%, 8%) !important;
+}
+
+/* Prevent horizontal overflow on all devices */
+html, body { overflow-x: clip; max-width: 100vw; }
+
+/* Mobile-specific overflow fix for Contact, Cart, Checkout */
+@media (max-width: 767px) {
+  html, body {
+    overflow-x: clip !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+  .min-h-screen {
+    overflow-x: clip;
+    max-width: 100vw;
+  }
+  /* Fix sponsored sections overflow with 0 margin */
+  [data-testid="sponsored-products"] {
+    overflow-x: hidden !important;
+    margin: 0 !important;
+  }
+  [data-testid="sponsored-products"] .flex.gap-3 {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+}
+
+/* Force hide Emergent badge everywhere */
+#emergent-badge,
+a[href*="emergent.sh"],
+[id*="emergent"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  left: -9999px !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+
+/* Mobile: always show cart button on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .mobile-cart-always-visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  /* Make all cart buttons in themed cards always visible on mobile */
+  .group .opacity-0 {
+    opacity: 1 !important;
+  }
+  /* Hide hover-only elements on mobile - let touch work naturally */
+  .hover-device\:-translate-y-0\.5:hover {
+    transform: none !important;
+  }
+  /* Share button always visible on phone */
+  .touch-device-show {
+    opacity: 1 !important;
+  }
+}
+
+/* Mobile phone: smaller cart/wishlist buttons on product cards */
+@media (max-width: 639px) {
+  .mobile-cart-always-visible {
+    padding: 0.375rem !important;
+  }
+  .mobile-cart-always-visible svg {
+    width: 0.875rem !important;
+    height: 0.875rem !important;
+  }
+  /* Share button always visible on phone */
+  .touch-device-show {
+    opacity: 1 !important;
+  }
+}
+
+/* Hover device media query for hover-dependent UI */
+@media (hover: hover) and (pointer: fine) {
+  .hover-device\:-translate-y-0\.5:hover {
+    transform: translateY(-2px);
+  }
+  .hover-device-group:hover .hover-device-group\:scale-105 {
+    transform: scale(1.05);
+  }
+}
+
+/* Fixed mobile filter button */
+.mobile-filter-fab {
+  position: fixed;
+  bottom: 80px;
+  right: 16px;
+  z-index: 40;
+  box-shadow: 0 8px 30px rgba(124, 58, 237, 0.3);
+}
+
+/* Touch device - always show share/actions */
+@media (hover: none) {
+  .touch-device-show {
+    opacity: 1 !important;
+  }
+}
+
+
+/* Sticky filters */
+.sticky-filters {
+  position: sticky;
+  top: 58px;
+  z-index: 15;
+  background: inherit;
+}
+
+/* Closer product cards on phone */
+@media (max-width: 639px) {
+  .mobile-products-grid {
+    gap: 2px !important;
+  }
+  .mobile-products-grid > * {
+    margin: 0 !important;
+  }
+}
+
+/* Compact gap on laptop/tablet too (1-2px feel) */
+@media (min-width: 640px) {
+  .mobile-products-grid {
+    gap: 3px !important;
+  }
+}
+
+/* Themed cards closer on phone */
+@media (max-width: 639px) {
+  .themed-grid {
+    gap: 2px !important;
+  }
+}
+@media (min-width: 640px) {
+  .themed-grid {
+    gap: 3px !important;
+  }
+}
+
+
+/* Fix z-index: Leaflet map vs dropdowns, mega menus, popovers */
+.leaflet-container {
+  z-index: 1 !important;
+}
+.leaflet-top, .leaflet-bottom {
+  z-index: 5 !important;
+}
+.leaflet-popup {
+  z-index: 10 !important;
+}
+/* Ensure Radix dropdowns/selects appear above map */
+[data-radix-popper-content-wrapper] {
+  z-index: 9999 !important;
+}
+/* Category bar mega menu above everything */
+.cat-dropdown {
+  z-index: 9999 !important;
+}
+.cat-dropdown-wrapper .cat-dropdown {
+  z-index: 9999 !important;
+}
+/* Select dropdown content */
+[role="listbox"] {
+  z-index: 9999 !important;
+}
+
+
+/* ===== MOBILE FRIENDLY INPUTS ===== */
+@media (max-width: 639px) {
+  /* All form inputs on mobile: full width, comfortable sizing */
+  .mobile-form input,
+  .mobile-form textarea,
+  .mobile-form select,
+  [data-testid="auth-container"] input,
+  [data-testid="auth-container"] textarea,
+  [data-testid="auth-container"] select,
+  [data-testid="become-seller-form"] input,
+  [data-testid="become-seller-form"] textarea,
+  [data-testid="become-seller-form"] select,
+  [data-testid="contact-form"] input,
+  [data-testid="contact-form"] textarea,
+  [data-testid="contact-form"] select,
+  [data-testid="track-order-form"] input,
+  [data-testid="track-order-form"] textarea,
+  [data-testid="track-order-form"] select {
+    width: 100% !important;
+    font-size: 14px !important;
+    padding: 10px 12px !important;
+    border-radius: 10px !important;
+  }
+
+  [data-testid="auth-container"] input::placeholder,
+  [data-testid="auth-container"] textarea::placeholder,
+  [data-testid="become-seller-form"] input::placeholder,
+  [data-testid="become-seller-form"] textarea::placeholder,
+  [data-testid="contact-form"] input::placeholder,
+  [data-testid="contact-form"] textarea::placeholder,
+  [data-testid="track-order-form"] input::placeholder,
+  [data-testid="track-order-form"] textarea::placeholder {
+    font-size: 13px !important;
+    color: #94a3b8 !important;
+  }
+
+  /* Auth page full-width card on mobile */
+  [data-testid="auth-container"] {
+    border-radius: 0 !important;
+    min-height: auto !important;
+  }
+
+  /* Form labels smaller on mobile */
+  [data-testid="auth-container"] label,
+  [data-testid="become-seller-form"] label,
+  [data-testid="contact-form"] label,
+  [data-testid="track-order-form"] label {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+  }
+
+  /* Mobile form padding */
+  .mobile-form-container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+/* Global overflow fix for body - use clip instead of hidden to not break sticky */
+body {
+  overflow-x: clip;
+}
+
+/* Advertising hub - subtle card lift on hover-capable devices */
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px -12px rgba(15, 23, 42, 0.18);
+  }
+}

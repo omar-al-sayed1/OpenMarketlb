@@ -1,0 +1,15 @@
+{"_e":"root:init","_t":1783198288296,"format":"v0-jsonl","version":"57.0.4"}
+{"_e":"env:mode","_t":1783198288297,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1783198288302,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1783198289538,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1783198290561,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"metro:instantiate","_t":1783198298773,"atlas":false,"workers":8,"host":"::","port":8081}
+{"_e":"metro:client_log","_t":1783198601032,"level":"error","data":["Project is incompatible with this version of Expo Go\n\nThis project requires a newer version of Expo Go.\n\nHow to fix this error:\nDownload the latest version of Expo Go from the Play Store."]}
+{"_e":"root:init","_t":1783199573536,"format":"v0-jsonl","version":"56.1.18"}
+{"_e":"env:mode","_t":1783199573538,"nodeEnv":"development","babelEnv":"development","mode":"development"}
+{"_e":"env:load","_t":1783199573542,"mode":"development","files":[],"env":{}}
+{"_e":"devserver:start","_t":1783199574062,"mode":"development","web":true,"baseUrl":"","asyncRoutes":false,"routerRoot":"../..\\..\\app","serverComponents":false,"serverActions":false,"serverRendering":false,"apiRoutes":false,"exporting":false}
+{"_e":"metro:config","_t":1783199574791,"serverRoot":"../..\\..","projectRoot":"../..\\..","exporting":false,"flags":{"autolinkingModuleResolution":false,"serverActions":false,"serverComponents":false,"reactCompiler":false,"optimizeGraph":false,"treeshaking":false,"logbox":false}}
+{"_e":"metro:instantiate","_t":1783199581944,"atlas":false,"workers":8,"host":"::","port":8081}
+{"_e":"metro:client_log","_t":1783199660223,"level":"error","data":["Project is incompatible with this version of Expo Go\n\nThis project requires a newer version of Expo Go.\n\nHow to fix this error:\nDownload the latest version of Expo Go from the Play Store."]}
+{"_e":"metro:server_log","_t":1783199768181,"level":"warn","data":["Failed to download the latest version of React Native DevTools. Using a fallback version instead. Connect to the internet or check your network settings."]}

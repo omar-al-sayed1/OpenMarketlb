@@ -1,0 +1,115 @@
+{
+  "summary": "Completed comprehensive backend testing of brownfield enhancements for OpenMarket Lebanon. All 18 tests passed with 100% success rate. Tested: welcome bonus logic (referred vs non-referred), finance center filtering (year/month), agent fill-shop with categories/logo, admin shops referral data, and monthly analytics.",
+  "backend_issues": {
+    "critical_bugs": [],
+    "flaky_endpoints": [],
+    "minor_issues": [
+      {
+        "endpoint": "/api/shop/register-guest",
+        "issue": "Response returns {message, status} instead of {application_id}. However, application is created successfully in database.",
+        "impact": "None - functionality works correctly",
+        "fix_priority": "LOW"
+      }
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "passed_tests": [
+    "Admin/Agent/Shop authentication with correct credentials",
+    "Welcome bonus NON-REFERRED: $2 wallet + 1 free sponsor credit",
+    "Welcome bonus REFERRED: $3 wallet + 2 free sponsor credits",
+    "Agent fill-shop stores category_ids and logo correctly",
+    "Agent fill-shop attaches referred_by_agent_id=agent-omar",
+    "Finance Center all-time view (period.active=false)",
+    "Finance Center year filter (2026) returns period.active=true",
+    "Finance Center month filter (June 2026) narrows results correctly",
+    "Finance Timeseries returns 12 months with all required fields",
+    "Finance Timeseries year=2026 returns 12 months",
+    "Admin shops endpoint returns Home Decor Plus with referral data (agent-omar, OMAR-IKL2L, 2 sponsors)",
+    "Monthly analytics returns profit breakdown by month"
+  ],
+  "test_report_links": [
+    "/app/backend/test_brownfield_enhancements.py"
+  ],
+  "action_item_for_main_agent": "",
+  "updated_files": [
+    "/app/backend/test_brownfield_enhancements.py"
+  ],
+  "success_percentage": {
+    "backend": "100% (18/18 tests passed)",
+    "frontend": "N/A (frontend testing skipped as requested)"
+  },
+  "should_call_test_agent_after_fix": false,
+  "should_main_agent_test_itself": false,
+  "detailed_test_results": {
+    "authentication": {
+      "status": "PASS",
+      "tests": [
+        "Admin login (admin@openmarket.com / Admin1234!) - token field 'token' verified",
+        "Agent login (example@agent.com / Agent1234!) - token obtained",
+        "Shop login (shop1@test.com / Test1234!) - token obtained",
+        "GET /api/categories - category_id retrieved for testing"
+      ]
+    },
+    "welcome_bonus_non_referred": {
+      "status": "PASS",
+      "tests": [
+        "POST /api/shop/register-guest creates application",
+        "POST /api/admin/guest-applications/{id}/approve with subscription_required=false",
+        "Verified shop has wallet_balance=2.0 and free_sponsor_credits=1"
+      ]
+    },
+    "welcome_bonus_referred": {
+      "status": "PASS",
+      "tests": [
+        "POST /api/agent/fill-shop creates referred application",
+        "Application has referred_by_agent_id=agent-omar",
+        "Application stores category_ids and logo",
+        "Approved shop has wallet_balance=3.0 and free_sponsor_credits=2"
+      ]
+    },
+    "agent_fill_shop": {
+      "status": "PASS",
+      "tests": [
+        "POST /api/agent/fill-shop with category_ids and logo",
+        "GET /api/admin/guest-applications verifies category_ids stored",
+        "Verified logo URL stored correctly",
+        "Verified referred_by_agent_id=agent-omar attached"
+      ]
+    },
+    "finance_center_filtering": {
+      "status": "PASS",
+      "tests": [
+        "GET /api/admin/finance-center (no params) - period.active=false, all-time profit=$830.7",
+        "GET /api/admin/finance-center?year=2026 - period.active=true, label='2026', profit=$830.7",
+        "GET /api/admin/finance-center?year=2026&month=6 - period.label='June 2026', profit=$570.9 (filtered)"
+      ]
+    },
+    "finance_timeseries": {
+      "status": "PASS",
+      "tests": [
+        "GET /api/admin/finance-center/timeseries - returns 12 months with profit, subscriptions, commissions, platform_services, monthly_credits, agent_payouts",
+        "GET /api/admin/finance-center/timeseries?year=2026 - returns 12 months for 2026"
+      ]
+    },
+    "admin_shops_referral_data": {
+      "status": "PASS",
+      "tests": [
+        "GET /api/admin/shops - Home Decor Plus (shop-homedecor) has referred_by_agent_id='agent-omar'",
+        "Verified referred_by_agent_name='Omar'",
+        "Verified referral_code='OMAR-IKL2L'",
+        "Verified free_sponsor_credits=2"
+      ]
+    },
+    "monthly_analytics": {
+      "status": "PASS",
+      "tests": [
+        "GET /api/admin/revenue/monthly-analytics - returns monthly dict with subscriptions, commissions, adjustments, platform_services, monthly_credits",
+        "Verified current_month object present"
+      ]
+    }
+  }
+}

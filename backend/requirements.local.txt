@@ -1,0 +1,21 @@
+# Minimal deps to RUN the backend locally (view data / core API).
+# Derived from the app's unguarded top-level imports. Heavy/optional packages
+# (google-*, grpcio, boto3, pandas, numpy, openai/litellm, emergentintegrations,
+# dev tools) are intentionally omitted - they're guarded by try/except or only
+# used by features not needed to browse data, and they were causing version
+# conflicts + Python 3.14 build failures.
+# Unpinned so pip resolves versions compatible with your Python.
+fastapi
+uvicorn[standard]
+motor
+pymongo
+dnspython
+pydantic
+email-validator
+python-dotenv
+python-multipart
+bcrypt
+PyJWT
+httpx
+requests
+stripe

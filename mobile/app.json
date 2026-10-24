@@ -1,0 +1,54 @@
+{
+  "expo": {
+    "name": "OpenMarket",
+    "slug": "openmarket-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "scheme": "openmarket",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.openmarket.mobile",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "package": "com.openmarketlb.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#ffffff"
+      },
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyCKzJi3012Oo3FTeo942eahUCjTo2mR-IA"
+        }
+      }
+    },
+    "web": {
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-font",
+      "expo-web-browser"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "15478d41-d386-4f1a-b11e-9d055307cb5e"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "fingerprint"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/15478d41-d386-4f1a-b11e-9d055307cb5e"
+    }
+  }
+}
